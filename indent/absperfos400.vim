@@ -40,10 +40,15 @@ function! GetOS400Indent()
 
     let midx = match(prevline, '\$\[')
     if midx != -1
-        " Add 'shiftwidth' if what we found previously is not in a comment and
-        " an "end" or "until" is not present on the same line.
         if synIDattr(synID(prevlnum, midx + 1, 1), "name") != "comment" && prevline != ']$'
             let ind = ind + &shiftwidth
+        endif
+    endif
+
+    let midx = match(prevline, '\S\+\s*\]\$')
+    if midx != -1
+        if synIDattr(synID(prevlnum, midx + 1, 1), "name") != "comment" && prevline != ']$'
+            let ind = ind - &shiftwidth
         endif
     endif
 
