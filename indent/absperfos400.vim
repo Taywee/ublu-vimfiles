@@ -6,7 +6,7 @@
 if exists("b:did_indent")
     finish
 endif
-" let b:did_indent = 1
+let b:did_indent = 1
 
 setlocal indentexpr=GetOS400Indent()
 
@@ -15,7 +15,7 @@ setlocal indentkeys+=0=]$
 setlocal autoindent
 
 if exists("*GetOS400Indent")
-    "finish
+    finish
 endif
 
 function! GetOS400Indent()
