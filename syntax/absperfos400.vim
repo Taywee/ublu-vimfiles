@@ -10,7 +10,7 @@ endif
 let b:current_syntax = "absperfos400"
 
 syn keyword basicLanguageKeywords CALL LOCAL
-syn keyword repeat DO FOR WHILE
+syn keyword repeat DO FOR in IN WHILE
 syn keyword function FUN FUNC
 syn keyword conditional IF THEN ELSE
 syn keyword commandKeywords as400 ask bye commandcall db defun dict dq eval exit fetch fetchxls ftp gensh help history h ifs interpret include job joblist lifo monitor msg msgq outq printer put rs savf server session sess spoolf spoolflist string system test tn5250 tuple usage user userlist spoollist
