@@ -13,7 +13,8 @@ syn keyword basicKeywords CALL LOCAL TASK BREAK
 syn keyword repeat DO FOR in IN WHILE
 syn keyword function FUN FUNC
 syn keyword conditional IF THEN ELSE
-syn keyword commandKeywords as400 ask bye commandcall db defun dict dq eval exit fetch fetchxls ftp gensh help history h ifs interpret include job joblist lifo monitor msg msgq outq printer put rs savf server session sess spoolf spoolflist string system test tn5250 tuple usage user userlist spoollist thread
+syn keyword commandKeywords as400 ask bye commandcall db defun dict dpoint dq eval exit fetchxls ftp gensh help histlog history h ifs interpret include jmx job joblist lifo list monitor msg msgq objlist outq printer put rs savf server session sess spoolf spoolflist string system test thread tn5250 tuple usage user userlist
+syn keyword deprecatedKeywords fetch spoollist
 syn keyword constants AUTOSTART BATCH INTERACTIVE SUBSYSTEM_MONITOR SPOOLED_READER SYSTEM SPOOLED_WRITER SCPF_SYSTEM ALL
 
 syn match number '\<[0-9]\+\>'
@@ -25,8 +26,14 @@ syn match number '\<[0-9]\+\.[0-9]\+e[0-9]\+\>'
 syn match option '-\S\+'
 syn match tuple '@\S\+'
 
+
 syn match comment "#.*$"
 syn match shebang "^#!.*$"
+
+syn match todo "\ctodo" containedin=comment contained
+
+syn match bang "!\s*[0-9]\+"
+
 
 syn match toOrFrom '\<-to\>' nextgroup=tuple skipwhite
 syn match toOrFrom '\<-from\>' nextgroup=tuple skipwhite
@@ -44,9 +51,12 @@ hi def link repeat Repeat
 hi def link function Keyword
 hi def link conditional Conditional
 hi def link commandKeywords Statement
+hi def link deprecatedKeywords Error
 hi def link tuple Identifier
 hi def link comment Comment
+hi def link todo Todo
 hi def link shebang SpecialComment
+hi def link bang Special
 hi def link string String
 hi def link number Number
 hi def link constants Constant
