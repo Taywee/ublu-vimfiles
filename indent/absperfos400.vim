@@ -33,28 +33,20 @@ function! GetOS400Indent()
     let ind = indent(prevlnum)
     let prevline = getline(prevlnum)
 
-    let midx = match(prevline, '\$\[.*\]\$')
-    if midx != -1
-        return ind
+    let lcount = len(split(prevline, '\$\[', 1)) - 1
+    let rcount = len(split(prevline, '\]\$', 1)) - 1
+    let shiftcount = lcount - rcount
+    let shift = &shiftwidth * shiftcount
+
+    let midx = match(line, '\(\]\$\|\$\[\)')
+
+    if synIDattr(synID(prevlnum, midx + 1, 1), "name") != "comment" && prevline != ']$'
+        let ind = ind + shift
     endif
 
-    let midx = match(prevline, '\$\[')
-    if midx != -1
-        if synIDattr(synID(prevlnum, midx + 1, 1), "name") != "comment" && prevline != ']$'
-            let ind = ind + &shiftwidth
-        endif
-    endif
-
-    let midx = match(prevline, '\S\+\s*\]\$')
-    if midx != -1
-        if synIDattr(synID(prevlnum, midx + 1, 1), "name") != "comment" && prevline != ']$'
-            let ind = ind - &shiftwidth
-        endif
-    endif
-
-    " Subtract a 'shiftwidth' on end, else (and elseif), until and '}'
+    " Subtract a 'shiftwidth' on ]$
     " This is the part that requires 'indentkeys'.
-    let midx = match(line, '\]\$')
+    let midx = match(line, '^\s*\]\$\s*')
     if midx != -1
         let ind = ind - &shiftwidth
     endif
