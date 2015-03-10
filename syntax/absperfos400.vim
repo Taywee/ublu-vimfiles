@@ -12,8 +12,8 @@ let b:current_syntax = "absperfos400"
 syn keyword basicKeywords CALL LOCAL TASK BREAK
 syn keyword repeat DO FOR in IN WHILE
 syn keyword function FUN FUNC
-syn keyword conditional IF THEN ELSE
-syn keyword commandKeywords as400 ask bye commandcall db defun dict dpoint dq eval exit fetchxls ftp gensh help histlog history h ifs interpret include jmx job joblist lifo list monitor msg msgq objlist outq printer put rs savf server session sess spoolf spoolflist string system sysval test thread tn5250 tuple usage user userlist
+syn keyword conditional IF THEN ELSE SWITCH
+syn keyword commandKeywords as400 ask bye calljava collection commandcall db dbug defun dict dpoint dq eval exit fetchxls ftp gensh help histlog history h ifs interpret include jmx job joblist jrnl jvm lifo list monitor msg msgq objlist outq printer put rs savf server session sess spoolf spoolflist string system sysval test thread tn5250 tuple usage user userlist
 syn keyword deprecatedKeywords fetch spoollist
 syn keyword constants AUTOSTART BATCH INTERACTIVE SUBSYSTEM_MONITOR SPOOLED_READER SYSTEM SPOOLED_WRITER SCPF_SYSTEM ALL
 
@@ -60,4 +60,3 @@ hi def link bang Special
 hi def link string String
 hi def link number Number
 hi def link constants Constant
-
