@@ -1,24 +1,24 @@
-" Vim indent file
-" Language: AbsPerfOS400 scripts
+" Vim ftdetect file
+" Language: Ublu scripts
 " Maintainer: https://github.com/Taywee
-" Latest Revision: 2014 August 26
-"
+" Latest Revision: 2016-09-29
+
 if exists("b:did_indent")
     finish
 endif
 let b:did_indent = 1
 
-setlocal indentexpr=GetOS400Indent()
+setlocal indentexpr=GetUbluIndent()
 
 setlocal indentkeys+=0=]$
 
 setlocal autoindent
 
-if exists("*GetOS400Indent")
+if exists("*GetUbluIndent")
     finish
 endif
 
-function! GetOS400Indent()
+function! GetUbluIndent()
     " Find a non-blank line above the current line.
     let prevlnum = prevnonblank(v:lnum - 1)
 
